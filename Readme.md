@@ -7,6 +7,10 @@ Cette command fonctionne au niveau client et pas serveur ce qui est important à
 ### Compatibilté :
 Pour maximiser la compatibilité avec les autres cheats et les autres composant externe utilisé dans le script, la version 4.8 de .NET sera utilisé.
 
+### Capture d'écran :
+![Image activé](https://github.com/alexandrecoulay/CSGO-wallhack/blob/main/Screen/activated.png)
+![Image désactivé](https://github.com/alexandrecoulay/CSGO-wallhack/blob/main/Screen/desactivated.png)
+
 ### 1. Risques
 ⛔ Valve n'autorise pas les cheats en jeu, c'est pourquoi vous l'utiliserez à votre propre risque et je ne suis pas responsable de tout bannissement.⛔
 Cependant, il est possible de lancer le jeu avec la commande `-insecure` qui permet de lancer le jeu sans activer l'anti-cheat  ce qui permet de tester n'importe quel script sans problème.
