@@ -1,10 +1,7 @@
 # Glow Hack CSGO
 CSGlow est un wallhack qui permet de voir les ennemies à travers les murs.
-Le hack active la fonction native du jeu qui permet de mettre en lumière les joueurs avec un "glow" qui s'active normalement avec les commandes :
-```
-sv_cheats 1
-glow_outline_effect_enable 1
-```
+Le hack active la fonction native du jeu qui permet de mettre en lumière les joueurs avec un "glow" qui s'active si on est spectateur d'une partie. J'ai juste changé la couleur de la lueur en rouge pour que ça ce voit mieux à travers les murs.
+
 Cette command fonctionne au niveau client et pas serveur ce qui est important à savoir avant de se lancer dans la création d'un cheat.
 
 ### Compatibilté :
@@ -70,8 +67,59 @@ Une fois les offsets récupérer, la partie intéressante peut commencer.
 	 1. On initialise le script avec `Program.cs` qui ouvre la 1ère boite de dialogue `./Forms/EntryForm.cs` qui permet d'ouvrir le jeu ou d'initialiser le script.
 	 2. La console qui s'ouvre simule un chargement qui permet de charger les offsets automatiquement, une fois les offsets chargé, une autre fenêtre s'ouvre `./Forms/MainForm.cs` avec un bouton pour activer/désactiver le wallhack. Il est possible d'ajouter facilement des boutons si d'autres options sont créé.
 	 3. Le script `./Misc/Threads.cs` est une sorte de routeur qui charge tout les scripts activable dans le fenêtre principal. Pour l'instant il n'y en a que 1 mais peut être que plus tard d'autre options seront créé (je pense pas ça prend trop de temps)
- 
+
+Les scripts `EngineDLL.cs` et `ClientDLL.cs` servent juste à lire les modules `engine.dll` et `client.dll` qui contiennent des informations différentes et complémentaire.
 Ensuite, c'est que de l'utilisation de la mémoire en forçant ou modifiant l'utilisation des offsets.
+
+Le script qui nous intéresse c'est surtout le `./Hacks/WallHack.cs`.
+
+### 5. WallHack.cs
+1. On regarde si le bouton est activé
+```csharp
+if (!Globals.WallHackEnabled)
+{
+	Thread.Sleep(Globals.IdleWait);
+	continue;
+}
+```
+2. On regarde si le joueur est bien dans un partie
+```csharp
+if (!EngineDLL.InGame)
+{
+	Thread.Sleep(Globals.IdleWait);
+	continue;
+}
+```
+3. On récupère le nombre maximum de joueur dans la partie (change en fonction du serveur et du mode de jeu donc on l'automatise) 
+```csharp
+int mp = EngineDLL.MaxPlayer;
+```
+4. On fait une boucle `for` qui pour chaque joueur regarde si
+```csharp
+# il existe bien
+if (entity == null) continue;
+# il est pas mort sinon on arrête la
+if (entity.Dormant) continue;
+# Sa vie est plus grand que 0
+if (entity.Health <= 0) continue;
+```
+5. Si ces conditions sont vraies, on regarde dans quel équipe il est puis on modifie les informations du glow
+```csharp
+GlowObject glowObject = entityList[i].GlowObject;
+
+glowObject.r = Globals.WallHackEnemy.R / 255;
+glowObject.g = Globals.WallHackEnemy.G / 255;
+glowObject.b = Globals.WallHackEnemy.B / 255;
+glowObject.a = 0.7f;
+glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
+glowObject.BloomAmount = Globals.FullBloomAmount;
+glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
+glowObject.m_bRenderWhenOccluded = true;
+glowObject.m_bRenderWhenUnoccluded = false;
+
+entityList[i].GlowObject = glowObject;
+```
+
 
 ### Sources :
 Les sources suivantes sont les plus fiable, je fais entièrement confiance aux scripts et aux tutoriels partagé sur ces forums. Les risques sont évalués, les cheats sont vérifiés et les sources sont également données si il y en a.

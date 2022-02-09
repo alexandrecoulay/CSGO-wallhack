@@ -14,8 +14,6 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer üretilen kod
-
         private void InitializeComponent()
         {
             this.tagTextBox = new System.Windows.Forms.TextBox();
@@ -35,19 +33,7 @@
             this.tagTextBox.Name = "tagTextBox";
             this.tagTextBox.Size = new System.Drawing.Size(100, 20);
             this.tagTextBox.TabIndex = 0;
-            // 
-            // saveButton
-            // 
-            this.saveButton.AutoSize = true;
-            this.saveButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.saveButton.Depth = 0;
-            this.saveButton.Location = new System.Drawing.Point(0, 0);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.saveButton.MouseState = MaterialSkin.MouseState.HOVER;
-            this.saveButton.Name = "saveButton";
-            this.saveButton.Primary = false;
-            this.saveButton.Size = new System.Drawing.Size(75, 23);
-            this.saveButton.TabIndex = 0;
+
             // 
             // keyButton
             // 
@@ -131,7 +117,6 @@
 
         }
 
-        #endregion
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private System.Windows.Forms.TextBox tagTextBox;
 

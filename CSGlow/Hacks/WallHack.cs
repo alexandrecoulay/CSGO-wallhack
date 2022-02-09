@@ -28,6 +28,7 @@ namespace CSGlow.Hacks
                     continue;
                 }
                 int mp = EngineDLL.MaxPlayer;
+                
                 for (int i = 0; i < mp; i++)
                 {
                     CBaseEntity baseEntity = entityList[i];
@@ -41,6 +42,7 @@ namespace CSGlow.Hacks
                     if (entity.Team != CBasePlayer.Team)
                     {
                         GlowObject glowObject = entityList[i].GlowObject;
+
                         glowObject.r = Globals.WallHackEnemy.R / 255;
                         glowObject.g = Globals.WallHackEnemy.G / 255;
                         glowObject.b = Globals.WallHackEnemy.B / 255;
