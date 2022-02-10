@@ -56,6 +56,13 @@ namespace CSGlow.Objects
             }
         }
 
+        public bool hasHelmet
+        {
+            get
+            {
+                return Memory.Read<int>(Base + m_bHasHelmet) == 1;
+            }
+        }
 
         public RenderColor RenderColor
         {

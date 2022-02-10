@@ -9,7 +9,8 @@ namespace CSGlow.Objects
         public static bool WallHackFullEnabled = false;
         public static bool WallHackGlowOnly = false;
         public static Color WallHackEnemy = Color.Red;
-        public static Color WallHackTeammate = Color.Green;
+        public static Color WallHackTeammate = Color.WhiteSmoke;
+        public static Color WallHackHelmetOwner = Color.Red;
         public static float FullBloomAmount = 1.0f;
 
         public static bool RenderEnabled = false;

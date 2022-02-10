@@ -39,13 +39,15 @@ namespace CSGlow.Hacks
                     if (entity.Dormant) continue;
                     if (entity.Health <= 0) continue;
 
+
                     if (entity.Team != CBasePlayer.Team)
                     {
                         GlowObject glowObject = entityList[i].GlowObject;
 
-                        glowObject.r = Globals.WallHackEnemy.R / 255;
-                        glowObject.g = Globals.WallHackEnemy.G / 255;
-                        glowObject.b = Globals.WallHackEnemy.B / 255;
+                        glowObject.r = 1;
+                        glowObject.g = 0;
+                        glowObject.b = 0;
+
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.BloomAmount = Globals.FullBloomAmount;
@@ -57,11 +59,13 @@ namespace CSGlow.Hacks
                     }
                     else
                     {
-                        GlowObject glowObject = entityList[i].GlowObject;
 
-                        glowObject.r = Globals.WallHackTeammate.R / 255;
-                        glowObject.g = Globals.WallHackTeammate.G / 255;
-                        glowObject.b = Globals.WallHackTeammate.B / 255;
+                        GlowObject glowObject = entityList[i].GlowObject;
+                        glowObject.r = 0;
+                        glowObject.g = 1;
+                        glowObject.b = 0;
+
+
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
