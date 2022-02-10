@@ -17,6 +17,7 @@ Cependant, il est possible de lancer le jeu avec la commande `-insecure` qui per
 ```
 Clique droit sur CSGO dans steam -> propriétés -> Général -> Options de lancement
 ```
+Et ouvrir le jeu en plein écran fenetré sinon ça il peut y avoir des bugs
 
 ### 2. Comment récupérer les offsets ?
 Il existe plusieurs solutions pour récupérer les offsets sur CSGO, la 1er et de faire une liste de variable au format `Int32` et de récupérer les valeurs du repo Github le plus utilisé [https://github.com/frk1/hazedumper](https://github.com/frk1/hazedumper) et de copier coller les adresses du fichier `csgo.cs`. Cette technique ne permet pas de publier un cheat maintenable facilement (ayant déjà utilisé cette technique avec un script AHK indétectable j'ai abandonnée après quelques mise à jour) mais très pratique pour un cheat personnel.
