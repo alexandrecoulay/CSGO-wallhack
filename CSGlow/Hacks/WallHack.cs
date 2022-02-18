@@ -65,7 +65,6 @@ namespace CSGlow.Hacks
                         glowObject.g = 1;
                         glowObject.b = 0;
 
-
                         glowObject.a = 0.7f;
                         glowObject.m_bFullBloom = Globals.WallHackFullEnabled;
                         glowObject.m_nGlowStyle = Globals.WallHackGlowOnly ? 1 : 0;
